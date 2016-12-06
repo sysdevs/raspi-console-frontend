@@ -20,14 +20,14 @@ OFILES:=$(OBJFILES:%=obj/%.o)
 BINFILE=test
 
 COMMONFLAGS=-Wall -Wextra -pedantic
-LDFLAGS=-lpthread
+LDFLAGS=-lpthread -lc++ -lc++abi -lc++experimental
 
 ifdef DEBUG
 	COMMONFLAGS:=$(COMMONFLAGS) -g
 endif
 
 CC=clang++
-CFLAGS=$(COMMONFLAGS) --std=c++14 -I./include/
+CFLAGS=$(COMMONFLAGS) --std=c++1z -stdlib=libc++ -I./include/
 
 all: $(BINFILE)
 
