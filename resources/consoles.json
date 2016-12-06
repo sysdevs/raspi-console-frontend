@@ -3,6 +3,7 @@
 		"name": "Nintendo Entertainment System",
 		"alias": "NES",
 		"image": "nes-console.jpg",
+		"rom-dir": "roms/nes",
 		"emulator": "some-nes-emulator",
 		"emulator-args": "$ROM"
 	},
@@ -10,6 +11,7 @@
 		"name": "Super Nintendo",
 		"alias": "SNES",
 		"image": "snes-console.jpg",
+		"rom-dir": "roms/snes",
 		"emulator": "some-snes-emulator",
 		"emulator-args": "$ROM"
 	}
