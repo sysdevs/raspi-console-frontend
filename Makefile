@@ -1,5 +1,5 @@
-VERBOSE=1
-DEBUG=1
+#VERBOSE=1
+#DEBUG=1
 
 ifdef VERBOSE
 	Q =
@@ -19,15 +19,15 @@ OFILES:=$(OBJFILES:%=obj/%.o)
 
 BINFILE=test
 
-COMMONFLAGS=-Wall -Wextra -pedantic
-LDFLAGS=-lpthread -lc++ -lc++abi -lc++experimental
+COMMONFLAGS=-std=c++14 -Wall -Wextra -pedantic
+LDFLAGS=-lpthread -lboost_system -lboost_filesystem
 
 ifdef DEBUG
 	COMMONFLAGS:=$(COMMONFLAGS) -g
 endif
 
 CC=clang++
-CFLAGS=$(COMMONFLAGS) --std=c++1z -stdlib=libc++ -I./include/
+CFLAGS=$(COMMONFLAGS) -I ./include/ -I/usr/local/include/boost/
 
 all: $(BINFILE)
 

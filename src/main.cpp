@@ -1,20 +1,16 @@
 #include <iostream>
-#include <experimental/filesystem>
-
-using fs = std::experimental::filesystem;
-
-void does_exist(const fs::path& p, fs::file_status s = fs::file_status{}) {
-	std::cout << p;
-	if (fs::status_known(s) ? fs::exists(s) : fs::exists(p)) {
-		std::cout << " exists" << std::endl;
-	} else () {
-		std::cout << " does not exist" << std::endl;
-	}
-}
+#include "resources.hpp"
 
 int main() {
-	fs::path p1 = "./resources/consoles.json";
+	const sysd::resources resources("./resources/");
 
-	demo_exists(p1);
+	if (!resources.is_root_valid()) {
+		std::cout << "could not locate resource directory" << std::endl;
+		return 1;
+	}
+
+	auto &consoles_path = resources.get("consoles.json");
+	std::cout << consoles_path.filename() << std::endl;
 	return 0;
 }
+
